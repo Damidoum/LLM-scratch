@@ -43,6 +43,10 @@ class DataModule:
             num_workers=self.num_workers,
         )
 
+    @property
+    def vocab_size(self) -> int:
+        return len(self.tokenizer)
+
 
 if __name__ == "__main__":
     from pathlib import Path

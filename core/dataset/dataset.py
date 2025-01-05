@@ -1,4 +1,3 @@
-import torch
 from torch.utils.data import Dataset
 
 from core.components.tokenizer import Tokenizer
@@ -13,8 +12,7 @@ class TokenizerDataset(Dataset):
     def __len__(self):
         return len(self.text) - self.seq_len - 1
 
-    def __getitem__(self, _):
-        idx = torch.randint(0, len(self.text) - self.seq_len - 1, (1,)).item()
+    def __getitem__(self, idx):
         encoded_sequence = self.tokenizer.encode(
             self.text[idx : idx + self.seq_len + 1]
         )
