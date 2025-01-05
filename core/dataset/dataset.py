@@ -5,7 +5,7 @@ from core.components.tokenizer import Tokenizer
 
 
 class TokenizerDataset(Dataset):
-    def __init__(self, tokenizer: Tokenizer, text: str, seq_len: int = 10):
+    def __init__(self, text: str, tokenizer: Tokenizer, seq_len: int = 10):
         self.tokenizer = tokenizer
         self.seq_len = seq_len
         self.text = text
@@ -22,6 +22,7 @@ class TokenizerDataset(Dataset):
 
 
 if __name__ == "__main__":
+    # pylint: disable=all
     from pathlib import Path
 
     path_folder = Path(__file__).parent
@@ -33,5 +34,5 @@ if __name__ == "__main__":
     tokenizer = Tokenizer()
     tokenizer.fit(txt)
 
-    dataset = TokenizerDataset(tokenizer, txt, seq_len=10)
+    dataset = TokenizerDataset(text=txt, tokenizer=tokenizer, seq_len=10)
     print(dataset[0])
